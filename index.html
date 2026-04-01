@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sandra Grey | Microsoft 365 & SharePoint Consultant</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal-dark: #0F6E56;
+    --teal-mid: #1D9E75;
+    --teal-light: #E1F5EE;
+    --teal-pale: #f0faf6;
+    --slate: #2C2C2A;
+    --slate-mid: #5F5E5A;
+    --slate-light: #B4B2A9;
+    --off-white: #faf9f7;
+    --white: #ffffff;
+    --accent: #0F6E56;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--slate);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,249,247,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(31,158,117,0.15);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    color: var(--teal-dark);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.875rem; font-weight: 500; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--slate-mid);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal-dark); }
+
+  /* HERO */
+  .hero {
+    min-height: 90vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2rem 4rem;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero-text h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    color: var(--slate);
+    margin-bottom: 1.5rem;
+  }
+  .hero-text h1 em {
+    font-style: italic;
+    color: var(--teal-dark);
+  }
+  .hero-text p {
+    font-size: 1.1rem;
+    color: var(--slate-mid);
+    max-width: 480px;
+    margin-bottom: 2rem;
+    line-height: 1.75;
+  }
+  .hero-badges {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .badge {
+    background: var(--teal-light);
+    color: var(--teal-dark);
+    font-size: 0.8rem; font-weight: 500;
+    padding: 0.3rem 0.85rem;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--teal-dark);
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: 4px;
+    font-size: 0.95rem; font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--teal-mid); transform: translateY(-1px); }
+  .btn-secondary {
+    border: 1.5px solid var(--teal-dark);
+    color: var(--teal-dark);
+    padding: 0.85rem 2rem;
+    border-radius: 4px;
+    font-size: 0.95rem; font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { background: var(--teal-light); }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .stat-card {
+    background: var(--white);
+    border: 1px solid rgba(31,158,117,0.15);
+    border-radius: 12px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--teal-mid);
+  }
+  .stat-card .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    color: var(--teal-dark);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .stat-card .stat-label {
+    font-size: 0.85rem;
+    color: var(--slate-mid);
+    font-weight: 400;
+  }
+  .logos-row {
+    grid-column: 1 / -1;
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--white);
+    border: 1px solid rgba(31,158,117,0.12);
+    border-radius: 8px;
+    margin-top: 0.5rem;
+  }
+  .logos-row span {
+    font-size: 0.75rem;
+    color: var(--slate-light);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    margin-right: 0.5rem;
+  }
+  .logo-pill {
+    font-size: 0.85rem; font-weight: 500;
+    color: var(--slate-mid);
+    background: var(--off-white);
+    padding: 0.3rem 0.85rem;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+
+  /* SECTION COMMON */
+  section { padding: 5rem 2rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal-mid);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    color: var(--slate);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .section-subtitle {
+    color: var(--slate-mid);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+
+  /* SERVICES */
+  .services-bg { background: var(--white); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--off-white);
+    border: 1px solid rgba(31,158,117,0.12);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(15,110,86,0.1); }
+  .service-icon {
+    width: 48px; height: 48px;
+    background: var(--teal-light);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+  }
+  .service-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    color: var(--slate);
+  }
+  .service-card p { font-size: 0.9rem; color: var(--slate-mid); line-height: 1.65; }
+
+  /* PORTFOLIO */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+  }
+  .project-card {
+    background: var(--white);
+    border: 1px solid rgba(31,158,117,0.12);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(15,110,86,0.1); }
+  .project-header {
+    background: var(--teal-dark);
+    padding: 1.5rem 1.75rem;
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 1rem;
+  }
+  .project-header h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    color: var(--white);
+    line-height: 1.3;
+  }
+  .project-header .client-name {
+    font-size: 0.8rem; font-weight: 500;
+    color: rgba(255,255,255,0.65);
+    margin-top: 0.25rem;
+  }
+  .project-tags {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    padding: 1rem 1.75rem 0;
+  }
+  .tag {
+    font-size: 0.72rem; font-weight: 500;
+    color: var(--teal-dark);
+    background: var(--teal-light);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+  }
+  .project-body { padding: 1rem 1.75rem 1.75rem; }
+  .project-body p { font-size: 0.9rem; color: var(--slate-mid); line-height: 1.7; margin-bottom: 1rem; }
+  .project-results {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0.4rem;
+  }
+  .project-results li {
+    font-size: 0.85rem; color: var(--slate);
+    display: flex; align-items: flex-start; gap: 0.6rem;
+  }
+  .project-results li::before {
+    content: '→';
+    color: var(--teal-mid);
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  /* ABOUT */
+  .about-bg { background: var(--teal-dark); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .about-text .section-label { color: rgba(255,255,255,0.5); }
+  .about-text .section-title { color: var(--white); }
+  .about-text p { color: rgba(255,255,255,0.75); font-size: 1rem; line-height: 1.8; margin-bottom: 1.25rem; }
+  .skills-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .skill-item {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.85);
+  }
+  .skill-item::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--teal-mid);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .timeline { display: flex; flex-direction: column; gap: 1.5rem; }
+  .timeline-item {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    position: relative;
+  }
+  .timeline-item .tl-company {
+    font-size: 0.75rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.07em;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.25rem;
+  }
+  .timeline-item .tl-role {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+  }
+  .timeline-item .tl-years {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* CONTACT */
+  .contact-bg { background: var(--white); }
+  .contact-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.95rem; font-weight: 500;
+    color: var(--teal-dark);
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border: 1.5px solid var(--teal-dark);
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .contact-link:hover { background: var(--teal-light); }
+
+  /* FOOTER */
+  footer {
+    background: var(--slate);
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    padding: 1.5rem 2rem;
+    font-size: 0.8rem;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; gap: 3rem; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    nav .nav-links { display: none; }
+    section { padding: 3.5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Sandra Grey</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <h1>Microsoft 365 solutions that <em>actually get adopted.</em></h1>
+    <p>Senior SharePoint & Power Platform consultant with 20+ years delivering enterprise digital workplace solutions. Former contractor for Microsoft and IBM.</p>
+    <div class="hero-badges">
+      <span class="badge">SharePoint Online</span>
+      <span class="badge">Power Apps</span>
+      <span class="badge">Power Automate</span>
+      <span class="badge">M365 Migration</span>
+      <span class="badge">Teams Deployment</span>
+      <span class="badge">Microsoft Copilot</span>
+    </div>
+    <div class="cta-group">
+      <a href="#portfolio" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-secondary">Let's Talk</a>
+    </div>
+  </div>
+  <div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Years of M365 expertise</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">30+</div>
+        <div class="stat-label">SharePoint intranets delivered</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">10TB+</div>
+        <div class="stat-label">Content migrated, zero data loss</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">70%</div>
+        <div class="stat-label">Avg reduction in manual processing</div>
+      </div>
+      <div class="logos-row">
+        <span>Worked with</span>
+        <span class="logo-pill">Microsoft</span>
+        <span class="logo-pill">IBM</span>
+        <span class="logo-pill">Nike</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="services-bg">
+  <div class="section-inner">
+    <p class="section-label">What I do</p>
+    <h2 class="section-title">End-to-end Microsoft 365 consulting</h2>
+    <p class="section-subtitle">From strategy through adoption — I deliver solutions that stick.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏛</div>
+        <h3>SharePoint Intranets</h3>
+        <p>Modern intranet architecture across home, department, and team sites — designed around how your people actually work, not how IT wishes they would.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <h3>Power Apps & Automate</h3>
+        <p>Custom canvas apps and automated workflows that eliminate manual bottlenecks. Production scheduling, credentialing platforms, approval flows — built to deliver real ROI.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚚</div>
+        <h3>M365 Migrations</h3>
+        <p>Large-scale migrations from Box, Google Drive, and file shares to SharePoint using ShareGate and custom PowerShell — zero data loss, minimal disruption.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💬</div>
+        <h3>Teams Deployment</h3>
+        <p>Full Teams rollouts with channel architecture, governance policies, and end-user adoption programs that actually drive uptake across your organization.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <h3>Copilot & AI Integration</h3>
+        <p>Strategic integration of Microsoft Copilot and AI tools into your M365 environment to automate business processes and surface insights intelligently.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Training & Adoption</h3>
+        <p>Comprehensive training programs, user guides, office hours, and FAQ documentation that make adoption stick — not just at launch, but long-term.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-inner">
+    <p class="section-label">Selected work</p>
+    <h2 class="section-title">Projects that moved the needle</h2>
+    <p class="section-subtitle">A sample of recent client engagements across industries.</p>
+    <div class="portfolio-grid">
+
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <h3>Production Scheduling System</h3>
+            <div class="client-name">Premier Gear — Automotive Manufacturing</div>
+          </div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Power Apps</span>
+          <span class="tag">SharePoint</span>
+          <span class="tag">SQL Server</span>
+          <span class="tag">Power Automate</span>
+        </div>
+        <div class="project-body">
+          <p>Custom canvas app for viewing and managing daily manufacturing schedules. Data pulls from SQL Server ERM system and stores schedule data in SharePoint lists — replacing a fragile manual process.</p>
+          <ul class="project-results">
+            <li>Immediate ROI through streamlined operations management</li>
+            <li>Full Teams and SharePoint setup for departmental use</li>
+            <li>Real-time visibility into production across work centers</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <h3>Continuing Education Platform</h3>
+            <div class="client-name">RHRS — Accounting & Compliance</div>
+          </div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Power Apps</span>
+          <span class="tag">SharePoint</span>
+          <span class="tag">Power Automate</span>
+        </div>
+        <div class="project-body">
+          <p>Multi-tab SharePoint list form for managing CPE courses, attendees, instructors, and evaluations — ensuring all accountants met annual credentialing requirements with automated certification.</p>
+          <ul class="project-results">
+            <li>60% reduction in administrative overhead</li>
+            <li>Automated email notifications with printable certification</li>
+            <li>Full compliance documentation and audit trail</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <h3>Enterprise Intranet — The Tidepool</h3>
+            <div class="client-name">Tides Foundation — Nonprofit, 254 members</div>
+          </div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">SharePoint Online</span>
+          <span class="tag">Teams</span>
+          <span class="tag">Migration</span>
+        </div>
+        <div class="project-body">
+          <p>Three-level intranet (home, department, team) with full migration from Google Drive, Box, and file shares. Delivered 20+ training courses, user guides, and weekly office hours through launch.</p>
+          <ul class="project-results">
+            <li>Organization-wide adoption across all departments</li>
+            <li>Zero data loss migration from three source systems</li>
+            <li>News hub, quick links, and onboarding workflows</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <h3>Healthcare Intranet — The LINK</h3>
+            <div class="client-name">RevoHealth — Healthcare Operations</div>
+          </div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">SharePoint Online</span>
+          <span class="tag">PnP Templates</span>
+          <span class="tag">PowerShell</span>
+          <span class="tag">Teams</span>
+        </div>
+        <div class="project-body">
+          <p>26-site rollout using PnP site templates and PowerShell scripting. Built custom employee directory interface with PnP Search. Three training sessions plus ten office hours with full documentation.</p>
+          <ul class="project-results">
+            <li>26 sites deployed consistently via automated templates</li>
+            <li>Custom employee directory with advanced search filtering</li>
+            <li>Comprehensive training and self-service documentation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <h3>Knowledge Management System</h3>
+            <div class="client-name">IBM (formerly Simpler) — 200+ Lean Consultants</div>
+          </div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">SharePoint Online</span>
+          <span class="tag">ShareGate</span>
+          <span class="tag">Power Automate</span>
+          <span class="tag">UX Design</span>
+        </div>
+        <div class="project-body">
+          <p>Led enterprise knowledge management transformation across dual SharePoint environments serving healthcare and pharmaceutical clients. Redesigned UX twice based on user research.</p>
+          <ul class="project-results">
+            <li>85% increase in system adoption after UX redesign</li>
+            <li>50% reduction in content retrieval time</li>
+            <li>Approval cycles reduced from 5 days to 24 hours</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <h3>Enterprise SharePoint Infrastructure</h3>
+            <div class="client-name">Microsoft — Redmond, 5,000+ employees</div>
+          </div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">SharePoint</span>
+          <span class="tag">Enterprise Architecture</span>
+          <span class="tag">Training</span>
+        </div>
+        <div class="project-body">
+          <p>Architected and delivered enterprise SharePoint solutions for Microsoft internal operations. Built 50+ team sites, newsletter systems, and custom collaboration tools. Led org-wide training for 200+ users.</p>
+          <ul class="project-results">
+            <li>40% reduction in support tickets post-training</li>
+            <li>Innovator of the Year award, 2010</li>
+            <li>Presented at Redmond SharePoint User Group</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about-bg">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label">About Sandra</p>
+        <h2 class="section-title">Built for the work that actually matters.</h2>
+        <p>I've spent 20+ years in the Microsoft ecosystem — from architecting enterprise solutions at Microsoft's own Redmond campus to leading knowledge management transformation at IBM. I've worked with Fortune 500 companies and five-person teams, and I bring the same care to both.</p>
+        <p>What I do differently: I don't just build technically sound solutions. I build ones people actually adopt. That means working closely with stakeholders, training end users, and designing around how people really work — not how a spec sheet says they should.</p>
+        <p>Available immediately for remote contract or permanent roles (W2 or C2C).</p>
+        <div class="skills-list">
+          <div class="skill-item">SharePoint Online Architecture</div>
+          <div class="skill-item">Power Apps Development</div>
+          <div class="skill-item">Power Automate Workflows</div>
+          <div class="skill-item">M365 Tenant Administration</div>
+          <div class="skill-item">ShareGate Migrations</div>
+          <div class="skill-item">PowerShell Scripting</div>
+          <div class="skill-item">Microsoft Teams Governance</div>
+          <div class="skill-item">Microsoft Copilot Integration</div>
+          <div class="skill-item">SPFx & Graph API</div>
+          <div class="skill-item">Agile / Scrum</div>
+        </div>
+      </div>
+      <div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="tl-company">SG Solutions</div>
+            <div class="tl-role">Independent M365 Consultant</div>
+            <div class="tl-years">2021 – Present</div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-company">IBM (formerly Simpler)</div>
+            <div class="tl-role">Knowledge Manager & Platform Lead</div>
+            <div class="tl-years">2014 – 2020 · 6 years 10 months</div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-company">Grey Web Designs</div>
+            <div class="tl-role">Founder & SharePoint Consultant</div>
+            <div class="tl-years">2010 – 2020 · 10 years</div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-company">Nike</div>
+            <div class="tl-role">Project Manager & Scrum Coach</div>
+            <div class="tl-years">2011</div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-company">Microsoft — Redmond</div>
+            <div class="tl-role">Senior Consultant & Project Manager</div>
+            <div class="tl-years">2006 – 2010 · 4 years 7 months</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-bg">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <p class="section-label">Get in touch</p>
+      <h2 class="section-title">Ready to transform your M365 environment?</h2>
+      <p style="color: #5F5E5A; font-size: 1.05rem; margin-top: 1rem;">Available immediately for remote contract or permanent roles. Let's talk about what you need.</p>
+      <div class="contact-links">
+        <a href="mailto:sgrey4124@gmail.com" class="contact-link">✉ sgrey4124@gmail.com</a>
+        <a href="tel:9705702880" class="contact-link">📞 970-570-2880</a>
+        <a href="https://linkedin.com/in/sandragrey" target="_blank" class="contact-link">in LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Sandra Grey · SG Solutions · Microsoft 365 & SharePoint Consultant</p>
+</footer>
+
+</body>
+</html>
